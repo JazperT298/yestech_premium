@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="New Announcement"
+                    android:text="New Video"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/et_AddEditDetails"
+                android:id="@+id/et_AddVideoTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -61,15 +61,32 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edittext"
                 android:ems="10"
-                android:height="150dp"
-                android:inputType="textMultiLine"
-                android:gravity="top"
-                android:hint="Write something here..."
+                android:hint="Video Title..."
+                android:inputType="textPersonName"
                 android:padding="12dp"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
+
+            <EditText
+                android:id="@+id/et_AddVideoDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_edittext"
+                android:ems="10"
+                android:height="100dp"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:hint="Video Details..."
+                android:padding="12dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_AddVideoTitle" />
 
             <TextView
                 android:id="@+id/tv_Filename"
@@ -81,7 +98,7 @@
                 android:textStyle="bold"
                 android:layout_marginStart="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_AddEditDetails" />
+                app:layout_constraintTop_toBottomOf="@+id/et_AddVideoDetails" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"

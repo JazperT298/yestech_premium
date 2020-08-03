@@ -141,7 +141,7 @@ public class AnnouncementFragment extends Fragment {
                 details = et_AddEditDetails.getText().toString();
 
                 if (details.isEmpty())
-                    Toasty.warning(context, "Please input news feed details.").show();
+                    Toasty.warning(context, "Please input announcement details.").show();
                 else {
                     //saveNewNewsfeed();
                     b.hide();
