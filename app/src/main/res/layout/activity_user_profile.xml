@@ -15,14 +15,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.2" />
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <ImageView
             android:id="@+id/iv_UserProfileBackground"
@@ -39,24 +39,25 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginTop="24dp"
-            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/iv_UserProfileBack"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="?android:attr/actionBarSize"
+                android:layout_height="?android:attr/actionBarSize"
+                android:scaleType="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_back_white_green" />
+                app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
             <ImageView
                 android:id="@+id/iv_UserProfileOptions"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,7 +127,6 @@
                     android:layout_marginEnd="16dp"
                     android:singleLine="true"
                     android:text="No File Chosen"
-                    android:textColor="@android:color/black"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_ChooseFile"
                     app:layout_constraintEnd_toEndOf="parent"
