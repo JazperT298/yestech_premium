@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.theyestech.yestechpremium.R;
+import com.theyestech.yestechpremium.activities.UserSearchActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,7 +49,7 @@ public class VideoLibFragment extends Fragment {
     private View view;
     private Context context;
 
-    private ImageView iv_AddVideo;
+    private ImageView iv_AddVideo,iv_Search;
     private TextView tv_Filename;
     private String title = "";
     private String details = "";
@@ -93,10 +94,18 @@ public class VideoLibFragment extends Fragment {
 
     private void initializeUI(){
         iv_AddVideo = view.findViewById(R.id.iv_AddVideo);
+        iv_Search = view.findViewById(R.id.iv_Search);
         iv_AddVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openAddVideoDialog();
+            }
+        });
+        iv_Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UserSearchActivity.class);
+                startActivity(intent);
             }
         });
     }

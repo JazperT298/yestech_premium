@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.theyestech.yestechpremium.R;
+import com.theyestech.yestechpremium.activities.UserSearchActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,7 +50,7 @@ public class AnnouncementFragment extends Fragment {
 
     private View view;
     private Context context;
-    private ImageView iv_AddAnnouncement;
+    private ImageView iv_AddAnnouncement,iv_Search;
     private TextView tv_Filename;
     private String details = "";
 
@@ -94,10 +95,18 @@ public class AnnouncementFragment extends Fragment {
 
     private void initializeUI(){
         iv_AddAnnouncement = view.findViewById(R.id.iv_AddAnnouncement);
+        iv_Search = view.findViewById(R.id.iv_Search);
         iv_AddAnnouncement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openAddAnnouncementDialog();
+            }
+        });
+        iv_Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UserSearchActivity.class);
+                startActivity(intent);
             }
         });
     }

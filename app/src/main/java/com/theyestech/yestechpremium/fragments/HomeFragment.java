@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.theyestech.yestechpremium.R;
 import com.theyestech.yestechpremium.activities.UserProfileActivity;
+import com.theyestech.yestechpremium.activities.UserSearchActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +27,7 @@ public class HomeFragment extends Fragment {
     private String role,password;
 
     private ImageView iv_HomeProfile;
+    private LinearLayout linear1;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -48,10 +51,18 @@ public class HomeFragment extends Fragment {
 
     private void initializeAdminUI(){
         iv_HomeProfile = view.findViewById(R.id.iv_HomeProfile);
+        linear1 = view.findViewById(R.id.linear1);
         iv_HomeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UserSearchActivity.class);
                 startActivity(intent);
             }
         });

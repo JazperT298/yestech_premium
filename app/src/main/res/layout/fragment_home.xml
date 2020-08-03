@@ -33,6 +33,16 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/iv_HomeChat"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_HomeProfile"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/chat_icons" />
+
+                <ImageView
                     android:id="@+id/iv_HomeProfile"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
