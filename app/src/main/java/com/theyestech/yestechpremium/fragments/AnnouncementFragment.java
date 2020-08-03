@@ -118,33 +118,27 @@ public class AnnouncementFragment extends Fragment {
         final View dialogView = inflater.inflate(R.layout.dialog_add_announcement, null);
         final EditText et_AddEditDetails;
         final Button btn_ChooseAddNewsFeedFile,btn_AddEditNewsFeedSave;
-        final ImageView imageView33;
+        final ImageView iv_File, iv_Save;
 
         et_AddEditDetails = dialogView.findViewById(R.id.et_AddEditDetails);
         //tvHeader = dialogView.findViewById(R.id.tvHeader);
-        btn_ChooseAddNewsFeedFile = dialogView.findViewById(R.id.btn_ChooseAddNewsFeedFile);
-        btn_AddEditNewsFeedSave = dialogView.findViewById(R.id.btn_AddEditNewsFeedSave);
-        imageView33 = dialogView.findViewById(R.id.imageView33);
+//        btn_ChooseAddNewsFeedFile = dialogView.findViewById(R.id.btn_ChooseAddNewsFeedFile);
+//        btn_AddEditNewsFeedSave = dialogView.findViewById(R.id.btn_AddEditNewsFeedSave);
+        iv_File = dialogView.findViewById(R.id.iv_File);
+        iv_Save = dialogView.findViewById(R.id.iv_Save);
         tv_Filename = dialogView.findViewById(R.id.tv_Filename);
 
         dialogBuilder.setView(dialogView);
         final AlertDialog b = dialogBuilder.create();
 
-        imageView33.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b.hide();
-            }
-        });
-
-        btn_ChooseAddNewsFeedFile.setOnClickListener(new View.OnClickListener() {
+        iv_File.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectActions();
             }
         });
 
-        btn_AddEditNewsFeedSave.setOnClickListener(new View.OnClickListener() {
+        iv_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 details = et_AddEditDetails.getText().toString();

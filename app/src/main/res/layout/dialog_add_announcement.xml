@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -42,14 +43,25 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView33"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/iv_File"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:scaleType="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_Save"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_attach_file_white_24dp" />
+
+                <ImageView
+                    android:id="@+id/iv_Save"
+                    android:layout_width="?android:attr/actionBarSize"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:scaleType="center"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_close_white" />
+                    app:srcCompat="@drawable/ic_save_white_24dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
@@ -76,10 +88,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:hint="No File Chosen"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 android:layout_marginStart="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_AddEditDetails" />
 
@@ -89,39 +103,39 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
-            <Button
-                android:id="@+id/btn_AddEditNewsFeedSave"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/button_fill_gradient_bg"
-                android:text="Post"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Filename" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_AddEditNewsFeedSave"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="24dp"-->
+<!--                android:background="@drawable/button_fill_gradient_bg"-->
+<!--                android:text="Post"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline3"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_Filename" />-->
 
-            <Button
-                android:id="@+id/btn_ChooseAddNewsFeedFile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/button_fill_gradient_bg2"
-                android:text="Choose File"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Filename"
-                app:layout_constraintStart_toStartOf="parent" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_ChooseAddNewsFeedFile"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="24dp"-->
+<!--                android:background="@drawable/button_fill_gradient_bg2"-->
+<!--                android:text="Choose File"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/guideline3"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_Filename"-->
+<!--                app:layout_constraintStart_toStartOf="parent" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
