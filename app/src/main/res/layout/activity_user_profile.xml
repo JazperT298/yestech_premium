@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <ImageView
+            android:id="@+id/iv_UserProfileBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_gradient" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_UserProfileBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back_white_green" />
+
+            <ImageView
+                android:id="@+id/iv_UserProfileOptions"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_options_white_green" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline12">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_UserProfileImage"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/montessori_logo" />
+
+                <Button
+                    android:id="@+id/btn_ChooseFile"
+                    android:layout_width="65dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/selector3"
+                    android:text="Choose File"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textSize="8sp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_UserProfileImage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_UploadPhoto"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/selector2"
+                    android:text="Upload Photo"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="8sp"
+                    app:layout_constraintStart_toStartOf="@+id/btn_ChooseFile"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_ChooseFile" />
+
+                <TextView
+                    android:id="@+id/tv_FileChose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:singleLine="true"
+                    android:text="No File Chosen"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_ChooseFile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btn_ChooseFile"
+                    app:layout_constraintTop_toTopOf="@+id/btn_ChooseFile" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView5">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector3">
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="SCHOOL INFORMATION"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_UpdateInfo"
+                    android:layout_width="70dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_fill_bg"
+                    android:layout_marginEnd="8dp"
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView81"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView81" />
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/colorCloud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="School Name : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view12" />
+
+                <TextView
+                    android:id="@+id/tv_SchoolName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Montessori de Oro"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="School Address : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolName" />
+
+                <TextView
+                    android:id="@+id/tv_SchoolAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Corner Echem and Tiano Bros. Sts. Cagayan de Oro City, Misamis Oriental Region 10 9000 PH"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address" />
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="School Details : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolAddress" />
+
+                <TextView
+                    android:id="@+id/tv_SchoolDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Montessori de Oro is prepared to guide our students by giving them the opportunity to interact and learn  in a safe environment where their health and security is always  a priority. Students can learn through Distance Learning where all their lessons are delivered by their Teacher's online . With Correspondence Learning , students are given tasks they have to finish and submit to their Teacher through their parents at a scheduled timeframe."
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details" />
+
+                <TextView
+                    android:id="@+id/motto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="School Motto : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolDetails" />
+
+                <TextView
+                    android:id="@+id/tv_SchoolMotto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/selector1"
+                    android:padding="5dp"
+                    android:text="YOUR FUTURE, OUR PRIDE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/motto" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="50dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView6">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/selector3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView86"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="CREDENTIALS"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_UpdateCredential"
+                    android:layout_width="70dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/button_fill_bg"
+                    android:layout_marginEnd="8dp"
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView86"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView86" />
+
+                <View
+                    android:id="@+id/view13"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/colorCloud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView86" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Username : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view13" />
+
+                <TextView
+                    android:id="@+id/tv_Username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="montessorideoro@gmail.com"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username" />
+
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Password : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Username" />
+
+                <TextView
+                    android:id="@+id/tv_Password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="*******"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password" />
+
+                <TextView
+                    android:id="@+id/confirmpassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Confirm Password : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_Password" />
+
+                <TextView
+                    android:id="@+id/tv_ConfirmPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="*******"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirmpassword" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
