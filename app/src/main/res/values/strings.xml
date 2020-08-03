@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Yestech Premium</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_announcement">Announcement</string>
+    <string name="title_video_lib">Video Library</string>
+    <string name="title_educator_list">Educator List</string>
+    <string name="title_student_list">Student List</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

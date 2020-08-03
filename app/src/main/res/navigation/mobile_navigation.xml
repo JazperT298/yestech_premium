@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.theyestech.yestechpremium.fragments.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_announcement"
+        android:name="com.theyestech.yestechpremium.fragments.AnnouncementFragment"
+        android:label="@string/title_announcement"
+        tools:layout="@layout/fragment_announcement" />
+
+    <fragment
+        android:id="@+id/navigation_video_lib"
+        android:name="com.theyestech.yestechpremium.fragments.VideoLibFragment"
+        android:label="@string/title_video_lib"
+        tools:layout="@layout/fragment_video_lib" />
+    <fragment
+        android:id="@+id/navigation_educator_list"
+        android:name="com.theyestech.yestechpremium.fragments.EducatorListFragment"
+        android:label="@string/title_educator_list"
+        tools:layout="@layout/fragment_educator_list" />
+
+    <fragment
+        android:id="@+id/navigation_student_list"
+        android:name="com.theyestech.yestechpremium.fragments.StudentListFragment"
+        android:label="@string/title_student_list"
+        tools:layout="@layout/fragment_student_list" />
+</navigation>
