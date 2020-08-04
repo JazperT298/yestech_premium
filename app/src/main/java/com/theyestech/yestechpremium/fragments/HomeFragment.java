@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.theyestech.yestechpremium.R;
 import com.theyestech.yestechpremium.activities.UserProfileActivity;
@@ -24,9 +25,10 @@ public class HomeFragment extends Fragment {
     private View view;
     private Context context;
 
-    private String role,password;
+    private String role,password,usertype;
 
     private ImageView iv_HomeProfile;
+    private TextView tv_HomeEmail;
     private LinearLayout linear1;
 
     public HomeFragment() {
@@ -46,11 +48,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Intent intent = getActivity().getIntent();
+        usertype = intent.getStringExtra("USERTYPE");
         initializeAdminUI();
     }
 
     private void initializeAdminUI(){
         iv_HomeProfile = view.findViewById(R.id.iv_HomeProfile);
+        tv_HomeEmail = view.findViewById(R.id.tv_HomeEmail);
+        tv_HomeEmail.setText("Hello " + usertype.toUpperCase());
         linear1 = view.findViewById(R.id.linear1);
         iv_HomeProfile.setOnClickListener(new View.OnClickListener() {
             @Override

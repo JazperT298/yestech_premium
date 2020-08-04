@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/educator_main_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.theyestech.yestechpremium.fragments.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_announcement"
+        android:name="com.theyestech.yestechpremium.fragments.AnnouncementFragment"
+        android:label="@string/title_announcement"
+        tools:layout="@layout/fragment_announcement" />
+
+    <fragment
+        android:id="@+id/navigation_my_subjects"
+        android:name="com.theyestech.yestechpremium.fragments.MySubjectsFragment"
+        android:label="@string/title_my_subject"
+        tools:layout="@layout/fragment_my_subjects" />
+
+    <fragment
+        android:id="@+id/navigation_my_files"
+        android:name="com.theyestech.yestechpremium.fragments.MyFilesFragment"
+        android:label="@string/title_my_files"
+        tools:layout="@layout/fragment_my_files" />
+
+    <fragment
+        android:id="@+id/navigation_video_lib"
+        android:name="com.theyestech.yestechpremium.fragments.VideoLibFragment"
+        android:label="@string/title_video_lib"
+        tools:layout="@layout/fragment_video_lib" />
+</navigation>
