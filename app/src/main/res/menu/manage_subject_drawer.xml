@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_home" />
+
+        <item
+            android:id="@+id/navigation_announcement"
+            android:icon="@drawable/ic_inbox_black_24dp"
+            android:title="@string/title_announcement" />
+
+        <item
+            android:id="@+id/navigation_video_lib"
+            android:icon="@drawable/ic_video_black_24dp"
+            android:title="@string/title_video_lib" />
+
+        <item
+            android:id="@+id/navigation_educator_list"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="@string/title_educator_list" />
+
+        <item
+            android:id="@+id/navigation_student_list"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/title_student_list" />
+    </group>
+</menu>

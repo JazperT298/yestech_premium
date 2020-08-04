@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.theyestech.yestechpremium.R;
 import com.theyestech.yestechpremium.activities.AddEducatorActivity;
+import com.theyestech.yestechpremium.activities.ManageSubjectActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +37,9 @@ public class MySubjectsFragment extends Fragment {
     private SwipeRefreshLayout swipe_SubjectList;
     private ConstraintLayout indicator_empty_record;
     private RecyclerView rv_SubjectList;
+
+    private CardView cardview;
+    private String usertype;
 
     public MySubjectsFragment() {
         // Required empty public constructor
@@ -53,6 +58,8 @@ public class MySubjectsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Intent intent = getActivity().getIntent();
+        usertype = intent.getStringExtra("USERTYPE");
         initializeUI();
     }
 
@@ -65,6 +72,7 @@ public class MySubjectsFragment extends Fragment {
         et_SearchSubject = view.findViewById(R.id.et_SearchSubject);
         swipe_SubjectList = view.findViewById(R.id.swipe_SubjectList);
         rv_SubjectList = view.findViewById(R.id.rv_SubjectList);
+        cardview = view.findViewById(R.id.cardview);
         et_SearchSubject.requestFocus();
         iv_Search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +109,14 @@ public class MySubjectsFragment extends Fragment {
 //                intent.putExtra("USERTYPE", "educator");
 //                startActivity(intent);
                 openAddEditDialog();
+            }
+        });
+        cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ManageSubjectActivity.class);
+                intent.putExtra("USERTYPE", usertype);
+                startActivity(intent);
             }
         });
     }
