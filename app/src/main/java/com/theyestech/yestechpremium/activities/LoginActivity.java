@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.putExtra("USERTYPE", et_LoginEmail.getText().toString());
                     startActivity(intent);
+                    finish();
                 }
 //                if(et_LoginEmail.getText().toString().equals("admin")){
 //                    Intent intent = new Intent(context, MainActivity.class);
