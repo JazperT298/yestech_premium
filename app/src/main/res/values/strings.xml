@@ -7,6 +7,10 @@
     <string name="title_educator_list">Educator List</string>
     <string name="title_student_list">Student List</string>
 
+    <string name="title_user_information">User Information</string>
+    <string name="title_user_background">User Background</string>
+    <string name="title_social_account">Social Account</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_educator_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.theyestech.yestechpremium.fragments.UserInformationFragment"
+        android:label="@string/title_user_information"
+        tools:layout="@layout/fragment_user_information" />
+
+    <fragment
+        android:id="@+id/navigation_announcement"
+        android:name="com.theyestech.yestechpremium.fragments.UserBackgroundFragment"
+        android:label="@string/title_user_background"
+        tools:layout="@layout/fragment_user_background" />
+
+    <fragment
+        android:id="@+id/navigation_video_lib"
+        android:name="com.theyestech.yestechpremium.fragments.SocialAccountFragment"
+        android:label="@string/title_social_account"
+        tools:layout="@layout/fragment_social_account" />
+
+</navigation>
