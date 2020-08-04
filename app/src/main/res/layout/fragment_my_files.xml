@@ -1,14 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/footerBackground"
     tools:context=".fragments.MyFilesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="8dp"
+        android:background="@color/footerBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_menuHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="My Files"
+            android:visibility="visible"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_Search"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="center"
+            android:visibility="visible"
+            android:src="@drawable/ic_search_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_AddFile"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/iv_AddFile"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
+            android:scaleType="center"
+            android:src="@drawable/ic_add_black_24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="visible"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_Back"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_arrow_back_white_24dp"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_SearchFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:inputType="textPersonName"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:padding="12dp"
+            android:hint="Search here..."
+            android:visibility="gone"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_Back"
+            app:layout_constraintEnd_toStartOf="@+id/iv_Close"
+            app:layout_constraintStart_toEndOf="@+id/iv_Back"
+            app:layout_constraintTop_toTopOf="@+id/iv_Back" />
+
+        <ImageView
+            android:id="@+id/iv_Close"
+            android:visibility="gone"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_close_white_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_FileList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/footerBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                layout="@layout/indicator_empty_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_FileList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
