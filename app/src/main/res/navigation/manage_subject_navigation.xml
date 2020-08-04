@@ -3,34 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/manage_subject_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_subject_details">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.theyestech.yestechpremium.fragments.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_subject_details"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectDetailsFragment"
+        android:label="@string/title_subject_details"
+        tools:layout="@layout/fragment_subject_details" />
 
     <fragment
-        android:id="@+id/navigation_announcement"
-        android:name="com.theyestech.yestechpremium.fragments.AnnouncementFragment"
-        android:label="@string/title_announcement"
-        tools:layout="@layout/fragment_announcement" />
+        android:id="@+id/navigation_students"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectStudentsFragment"
+        android:label="@string/title_students"
+        tools:layout="@layout/fragment_subject_students" />
 
     <fragment
-        android:id="@+id/navigation_video_lib"
-        android:name="com.theyestech.yestechpremium.fragments.VideoLibFragment"
-        android:label="@string/title_video_lib"
-        tools:layout="@layout/fragment_video_lib" />
+        android:id="@+id/navigation_attendance"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectAttendanceFragment"
+        android:label="@string/title_attendance"
+        tools:layout="@layout/fragment_subject_attendance" />
     <fragment
-        android:id="@+id/navigation_educator_list"
-        android:name="com.theyestech.yestechpremium.fragments.EducatorListFragment"
-        android:label="@string/title_educator_list"
-        tools:layout="@layout/fragment_educator_list" />
+        android:id="@+id/navigation_topics"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectTopicsFragment"
+        android:label="@string/title_topics"
+        tools:layout="@layout/fragment_subject_topics" />
 
     <fragment
-        android:id="@+id/navigation_student_list"
-        android:name="com.theyestech.yestechpremium.fragments.StudentListFragment"
-        android:label="@string/title_student_list"
-        tools:layout="@layout/fragment_student_list" />
+        android:id="@+id/navigation_quizzes"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectQuizzesFragment"
+        android:label="@string/title_quizzes"
+        tools:layout="@layout/fragment_subject_quizzes" />
+
+    <fragment
+        android:id="@+id/navigation_assignment"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectAssignmentFragment"
+        android:label="@string/title_assignment"
+        tools:layout="@layout/fragment_subject_assignment" />
+
+    <fragment
+        android:id="@+id/navigation_assessment"
+        android:name="com.theyestech.yestechpremium.fragments.SubjectAssessmentFragment"
+        android:label="@string/title_assessment"
+        tools:layout="@layout/fragment_subject_assessment" />
 </navigation>

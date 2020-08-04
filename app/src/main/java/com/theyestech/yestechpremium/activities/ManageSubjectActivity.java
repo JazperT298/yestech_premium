@@ -30,11 +30,11 @@ public class ManageSubjectActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_views);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_announcement, R.id.navigation_video_lib,R.id.navigation_educator_list,R.id.navigation_student_list)
+                R.id.navigation_subject_details, R.id.navigation_students, R.id.navigation_attendance,R.id.navigation_topics,R.id.navigation_quizzes, R.id.navigation_assignment,R.id.navigation_assessment)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

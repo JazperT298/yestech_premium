@@ -13,6 +13,14 @@
     <string name="title_my_subject">My Subjects</string>
     <string name="title_my_files">My Files</string>
 
+    <string name="title_subject_details">Subject Details</string>
+    <string name="title_students">Students</string>
+    <string name="title_attendance">Attendance</string>
+    <string name="title_topics">Topics</string>
+    <string name="title_quizzes">Quizzes</string>
+    <string name="title_assignment">Assignment</string>
+    <string name="title_assessment">Assessment</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
