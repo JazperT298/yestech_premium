@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.theyestech.yestechpremium.R;
 
-public class AddEducatorActivity extends AppCompatActivity {
+public class AddStudentActivity extends AppCompatActivity {
     private Context context;
 
     private String role;
@@ -26,7 +26,7 @@ public class AddEducatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_educator);
+        setContentView(R.layout.activity_add_student);
         navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -39,7 +39,6 @@ public class AddEducatorActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         usertype = intent.getStringExtra("USERTYPE");
-
         context = this;
     }
 

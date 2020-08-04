@@ -95,6 +95,7 @@ public class EducatorListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddEducatorActivity.class);
+                intent.putExtra("USERTYPE", "educator");
                 startActivity(intent);
             }
         });
