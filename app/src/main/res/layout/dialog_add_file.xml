@@ -33,12 +33,12 @@
                     android:id="@+id/textView59"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="New File"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_Save"
+                    app:layout_constraintStart_toEndOf="@+id/btn_File"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -46,6 +46,7 @@
                     android:layout_width="?android:attr/actionBarSize"
                     android:layout_height="?android:attr/actionBarSize"
                     android:scaleType="center"
+                    android:visibility="gone"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/iv_Save"
@@ -58,11 +59,42 @@
                     android:layout_height="?android:attr/actionBarSize"
                     android:scaleType="center"
                     android:layout_marginEnd="8dp"
+                    android:visibility="gone"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_save_white_24dp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_File"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="File"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_500"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_Save"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:gravity="center"
+                    android:text="Save"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:visibility="visible"
+                    android:textColor="@color/blue_500"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText

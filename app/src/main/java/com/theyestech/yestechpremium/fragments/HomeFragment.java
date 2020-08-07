@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, UserProfileActivity.class);
+                intent.putExtra("USERTYPE", usertype);
                 startActivity(intent);
             }
         });

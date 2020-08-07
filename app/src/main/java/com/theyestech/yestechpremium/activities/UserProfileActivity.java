@@ -67,10 +67,17 @@ public class UserProfileActivity extends AppCompatActivity {
     private String displayName = "";
     private File myFile;
     private String name = "", address = "", details = "", motto = "";
+    private String usertype;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        Intent intent = getIntent();
+        usertype = intent.getStringExtra("USERTYPE");
+        if(usertype.equals("admin")){
+            setContentView(R.layout.activity_school_profile);
+        }else if (usertype.equals("educator")){
+            setContentView(R.layout.activity_user_profile);
+        }
         context = this;
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);

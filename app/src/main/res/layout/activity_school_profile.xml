@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="USER INFORMATION"
+                    android:text="SCHOOL INFORMATION"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,18 +199,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Firstname : "
+                    android:text="School Name : "
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view12" />
 
                 <TextView
-                    android:id="@+id/tv_Firstname"
+                    android:id="@+id/tv_SchoolName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Rosalind"
+                    android:text="Montessori de Oro"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="5dp"
@@ -221,93 +221,68 @@
                     app:layout_constraintTop_toBottomOf="@+id/name" />
 
                 <TextView
-                    android:id="@+id/lastname"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="Lastname : "
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_Firstname" />
-
-                <TextView
-                    android:id="@+id/tv_Lastname"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Mugot"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="5dp"
-                    android:padding="5dp"
-                    android:background="@drawable/selector1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lastname" />
-
-                <TextView
-                    android:id="@+id/middlename"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="Middlename : "
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_Lastname" />
-
-                <TextView
-                    android:id="@+id/tv_Middlename"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Mondero"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="5dp"
-                    android:padding="5dp"
-                    android:background="@drawable/selector1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/middlename" />
-
-                <TextView
                     android:id="@+id/address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Address : "
+                    android:text="School Address : "
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_Middlename" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolName" />
 
                 <TextView
-                    android:id="@+id/tv_Address"
+                    android:id="@+id/tv_SchoolAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="Corner Echem and Tiano Bros. Sts. Cagayan de Oro City, Misamis Oriental Region 10 9000 PH"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/selector1"
+                    android:layout_marginTop="5dp"
                     android:padding="5dp"
-                    android:text="Address"
+                    android:background="@drawable/selector1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
 
                 <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Email : "
+                    android:text="School Details : "
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_Address" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolAddress" />
 
                 <TextView
-                    android:id="@+id/tv_Email"
+                    android:id="@+id/tv_SchoolDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Montessori de Oro is prepared to guide our students by giving them the opportunity to interact and learn  in a safe environment where their health and security is always  a priority. Students can learn through Distance Learning where all their lessons are delivered by their Teacher's online . With Correspondence Learning , students are given tasks they have to finish and submit to their Teacher through their parents at a scheduled timeframe."
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/selector1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details" />
+
+                <TextView
+                    android:id="@+id/motto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="School Motto : "
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SchoolDetails" />
+
+                <TextView
+                    android:id="@+id/tv_SchoolMotto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -316,11 +291,11 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/selector1"
                     android:padding="5dp"
-                    android:text="Address"
+                    android:text="YOUR FUTURE, OUR PRIDE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/email" />
+                    app:layout_constraintTop_toBottomOf="@+id/motto" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -350,7 +325,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="USER CREDENTIALS"
+                    android:text="CREDENTIALS"
                     android:textStyle="bold"
                     android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
