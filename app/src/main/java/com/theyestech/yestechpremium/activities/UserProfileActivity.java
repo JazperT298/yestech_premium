@@ -51,7 +51,7 @@ public class UserProfileActivity extends AppCompatActivity{
     private View view;
     private Context context;
 
-    private Button btn_ChooseFile, btn_UploadPhoto, btn_UpdateInfo, btn_UpdateCredential;
+    private Button btn_ChooseFile, btn_UploadPhoto, btn_UpdateInfo, btn_UpdateCredential,btn_UpdateBackground;
     private ImageView iv_UserProfileImage,iv_UserProfileBack,iv_UserCoverPhoto,iv_UserProfileBackground;
     private TextView tv_FileChose,tv_SchoolName,tv_SchoolAddress,tv_SchoolDetails,tv_SchoolMotto,tv_Username,tv_Password,tv_ConfirmPassword,tv_UserProfileMotto,tv_UserProfileFullname;
     private AppCompatButton btn_Save;
@@ -124,6 +124,7 @@ public class UserProfileActivity extends AppCompatActivity{
         iv_UserCoverPhoto = findViewById(R.id.iv_UserCoverPhoto);
         iv_UserProfileBackground = findViewById(R.id.iv_UserProfileBackground);
         btn_Save = findViewById(R.id.btn_Save);
+        btn_UpdateBackground = findViewById(R.id.btn_UpdateBackground);
         tv_UserProfileFullname.setText("Mugot, Rosalind");
         tv_UserProfileMotto.setText("Education is the mother of leadership.");
         iv_UserCoverPhoto.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +148,8 @@ public class UserProfileActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Toasty.warning(context, "Wala pay function").show();
+                iv_UserCoverPhoto.setVisibility(View.VISIBLE);
+                btn_Save.setVisibility(View.GONE);
             }
         });
         btn_UploadPhoto.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +177,7 @@ public class UserProfileActivity extends AppCompatActivity{
                 openUpdateInfoDialog();
             }
         });
-        btn_UpdateCredential.setOnClickListener(new View.OnClickListener() {
+        btn_UpdateBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openUpdateCredentials();
@@ -383,12 +386,12 @@ public class UserProfileActivity extends AppCompatActivity{
                 selectedFilePath = cursor.getString(columnIndex);
                 myFile = new File(selectedFilePath);
                 displayName = myFile.getName();
-                tv_FileChose.setText(displayName);
                 if(select == 2){
                     Glide.with(context)
                             .load(selectedFile)
                             .apply(GlideOptions.getOptions())
                             .into(iv_UserProfileImage);
+                    tv_FileChose.setText(displayName);
                     btn_ChooseFile.setVisibility(View.GONE);
                     btn_UploadPhoto.setVisibility(View.VISIBLE);
                 }else{
