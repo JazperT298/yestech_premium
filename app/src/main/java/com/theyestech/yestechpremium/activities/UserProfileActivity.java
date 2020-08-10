@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,19 +44,26 @@ import com.theyestech.yestechpremium.utils.GlideOptions;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
-public class UserProfileActivity extends AppCompatActivity{
+public class UserProfileActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     private View view;
     private Context context;
 
+    //Admin
     private Button btn_ChooseFile, btn_UploadPhoto, btn_UpdateInfo, btn_UpdateCredential,btn_UpdateBackground;
-    private ImageView iv_UserProfileImage,iv_UserProfileBack,iv_UserCoverPhoto,iv_UserProfileBackground;
+    private ImageView iv_UserSchoolImage,iv_UserProfileBack,iv_UserCoverPhoto,iv_UserProfileBackground,iv_UserProfileImage;
     private TextView tv_FileChose,tv_SchoolName,tv_SchoolAddress,tv_SchoolDetails,tv_SchoolMotto,tv_Username,tv_Password,tv_ConfirmPassword,tv_UserProfileMotto,tv_UserProfileFullname;
     private AppCompatButton btn_Save;
+    private TextView tv_UserSchoolName, tv_UserSchoolMotto;
+
+    //User
+    private Button btn_UpdateUserInfo, btn_UpdateUserBackground,btn_UpdateUserSocial,btn_UpdateUserCredential;
+    private EditText et_Birthday;
 
     private static final int STORAGE_REQUEST_CODE = 400;
     private static final int IMAGE_PICK_GALLERY_CODE = 1000;
@@ -73,7 +82,7 @@ public class UserProfileActivity extends AppCompatActivity{
     private String selectedFilePath = "";
     private String displayName = "";
     private File myFile;
-    private String name = "", address = "", details = "", motto = "";
+    private String name = "", address = "", details = "", motto = "", facebook = "", instagram = "", skype = "", twitter = "", email = "", zoom = "", birthday = "";
     private String usertype;
 
     private BottomSheetDialog bottomSheetDialog;
@@ -101,7 +110,11 @@ public class UserProfileActivity extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
-        initializeUI();
+        if(usertype.equals("admin")){
+            initializeUI();
+        }else if (usertype.equals("educator")){
+            initializeUserUI();
+        }
     }
 
     private void initializeUI(){
@@ -121,10 +134,76 @@ public class UserProfileActivity extends AppCompatActivity{
         tv_Username = findViewById(R.id.tv_Username);
         tv_Password = findViewById(R.id.tv_Password);
         tv_ConfirmPassword = findViewById(R.id.tv_ConfirmPassword);
+        iv_UserProfileBackground = findViewById(R.id.iv_UserProfileBackground);
+        tv_UserSchoolName = findViewById(R.id.tv_UserSchoolName);
+        tv_UserSchoolMotto = findViewById(R.id.tv_UserSchoolMotto);
+        tv_UserSchoolName.setText("Montessori de Oro");
+        tv_UserSchoolMotto.setText("YOUR FUTURE, OUR PRIDE");
+        btn_ChooseFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select = 2;
+                openBottomSheetDialog();
+            }
+        });
+
+        btn_UploadPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(displayName.isEmpty()){
+                    Toasty.warning(context, "Please chose a file").show();
+                }else{
+                    Toasty.warning(context, "Wala pay function").show();
+                    tv_FileChose.setText("No File Chosen");
+                    btn_ChooseFile.setVisibility(View.VISIBLE);
+                    btn_UploadPhoto.setVisibility(View.GONE);
+                }
+            }
+        });
+        iv_UserProfileBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        btn_UpdateInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateInfoDialog();
+            }
+        });
+        btn_UpdateCredential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateCredentials();
+            }
+        });
+    }
+
+    private void initializeUserUI(){
+        tv_UserProfileFullname = findViewById(R.id.tv_UserProfileFullname);
+        tv_UserProfileMotto = findViewById(R.id.tv_UserProfileMotto);
+        btn_ChooseFile = findViewById(R.id.btn_ChooseFile);
+        btn_UploadPhoto = findViewById(R.id.btn_UploadPhoto);
+        btn_UpdateInfo = findViewById(R.id.btn_UpdateInfo);
+        btn_UpdateCredential = findViewById(R.id.btn_UpdateCredential);
+        iv_UserProfileImage = findViewById(R.id.iv_UserProfileImage);
+        iv_UserProfileBack = findViewById(R.id.iv_UserProfileBack);
+        tv_FileChose = findViewById(R.id.tv_FileChose);
+        tv_SchoolName = findViewById(R.id.tv_SchoolName);
+        tv_SchoolAddress = findViewById(R.id.tv_SchoolAddress);
+        tv_SchoolDetails = findViewById(R.id.tv_SchoolDetails);
+        tv_SchoolMotto = findViewById(R.id.tv_SchoolMotto);
+        tv_Username = findViewById(R.id.tv_Username);
+        tv_Password = findViewById(R.id.tv_Password);
+        tv_ConfirmPassword = findViewById(R.id.tv_ConfirmPassword);
         iv_UserCoverPhoto = findViewById(R.id.iv_UserCoverPhoto);
         iv_UserProfileBackground = findViewById(R.id.iv_UserProfileBackground);
         btn_Save = findViewById(R.id.btn_Save);
-        btn_UpdateBackground = findViewById(R.id.btn_UpdateBackground);
+        btn_UpdateUserBackground = findViewById(R.id.btn_UpdateUserBackground);
+        btn_UpdateUserInfo = findViewById(R.id.btn_UpdateUserInfo);
+        btn_UpdateUserSocial = findViewById(R.id.btn_UpdateUserSocial);
+        btn_UpdateUserCredential = findViewById(R.id.btn_UpdateUserCredential);
         tv_UserProfileFullname.setText("Mugot, Rosalind");
         tv_UserProfileMotto.setText("Education is the mother of leadership.");
         iv_UserCoverPhoto.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +218,6 @@ public class UserProfileActivity extends AppCompatActivity{
             public void onClick(View v) {
                 select = 2;
                 openBottomSheetDialog();
-//                UserPhotoBottomSheetDialog bottomSheet = new UserPhotoBottomSheetDialog();
-//                bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
-                //selectActions();
             }
         });
         btn_Save.setOnClickListener(new View.OnClickListener() {
@@ -171,18 +247,31 @@ public class UserProfileActivity extends AppCompatActivity{
                 finish();
             }
         });
-        btn_UpdateInfo.setOnClickListener(new View.OnClickListener() {
+        btn_UpdateUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openUpdateInfoDialog();
+                openUpdateUserInfoDialog();
             }
         });
-        btn_UpdateBackground.setOnClickListener(new View.OnClickListener() {
+        btn_UpdateUserBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openUpdateCredentials();
+                openUpdateUserBackgroundDialog();
             }
         });
+        btn_UpdateUserSocial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateUserSocialDialog();
+            }
+        });
+        btn_UpdateUserCredential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateUserCredentials();
+            }
+        });
+
     }
 
     private void openBottomSheetDialog(){
@@ -262,18 +351,17 @@ public class UserProfileActivity extends AppCompatActivity{
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_update_credentials, null);
         final EditText et_Username, et_Password, et_ConfirmPassword;
-        final ImageView iv_Save;
+        final AppCompatButton btn_Save;
 
         et_Username = dialogView.findViewById(R.id.et_Username);
         et_Password = dialogView.findViewById(R.id.et_Password);
         et_ConfirmPassword = dialogView.findViewById(R.id.et_ConfirmPassword);
 
-        iv_Save = dialogView.findViewById(R.id.iv_Save);
-
+        btn_Save = dialogView.findViewById(R.id.btn_Save);
         dialogBuilder.setView(dialogView);
         final AlertDialog b = dialogBuilder.create();
 
-        iv_Save.setOnClickListener(new View.OnClickListener() {
+        btn_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 name = et_Username.getText().toString();
@@ -291,6 +379,187 @@ public class UserProfileActivity extends AppCompatActivity{
 
         b.show();
         Objects.requireNonNull(b.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    private void openUpdateUserInfoDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update_user_info, null);
+        final EditText et_Firstname, et_Lastname, et_Middlename,et_Address,et_Email;
+        final AppCompatButton btn_Save;
+
+        et_Firstname = dialogView.findViewById(R.id.et_Firstname);
+        et_Lastname = dialogView.findViewById(R.id.et_Lastname);
+        et_Middlename = dialogView.findViewById(R.id.et_Middlename);
+        et_Address = dialogView.findViewById(R.id.et_Address);
+        et_Email = dialogView.findViewById(R.id.et_Email);
+        et_Birthday = dialogView.findViewById(R.id.et_Birthday);
+        et_Birthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
+        btn_Save = dialogView.findViewById(R.id.btn_Save);
+
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+
+        btn_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                facebook = et_Firstname.getText().toString();
+                instagram = et_Lastname.getText().toString();
+                skype = et_Middlename.getText().toString();
+                twitter = et_Address.getText().toString();
+                email = et_Email.getText().toString();
+                zoom = et_Birthday.getText().toString();
+
+                if (facebook.isEmpty() || instagram.isEmpty() || skype.isEmpty() || twitter.isEmpty()|| email.isEmpty() || zoom.isEmpty())
+                    Toasty.warning(context, "Please input all fields.").show();
+                else {
+                    Toasty.warning(context, "Wala pay Function.").show();
+                    b.hide();
+                }
+            }
+        });
+
+        b.show();
+        Objects.requireNonNull(b.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+    private void openUpdateUserBackgroundDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update_user_background, null);
+        final EditText et_EducationAttainment, et_Position, et_SubjectMajor,et_Motto;
+        final AppCompatButton btn_Save;
+
+        et_EducationAttainment = dialogView.findViewById(R.id.et_EducationAttainment);
+        et_Position = dialogView.findViewById(R.id.et_Position);
+        et_SubjectMajor = dialogView.findViewById(R.id.et_SubjectMajor);
+        et_Motto = dialogView.findViewById(R.id.et_Motto);
+
+        btn_Save = dialogView.findViewById(R.id.btn_Save);
+
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+
+        btn_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                facebook = et_EducationAttainment.getText().toString();
+                instagram = et_Position.getText().toString();
+                skype = et_SubjectMajor.getText().toString();
+                twitter = et_Motto.getText().toString();
+
+                if (facebook.isEmpty() || instagram.isEmpty() || skype.isEmpty() || twitter.isEmpty())
+                    Toasty.warning(context, "Please input all fields.").show();
+                else {
+                    Toasty.warning(context, "Wala pay Function.").show();
+                    b.hide();
+                }
+            }
+        });
+
+        b.show();
+        Objects.requireNonNull(b.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+    private void openUpdateUserSocialDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update_user_social, null);
+        final EditText et_Facebook, et_Instagram, et_Skype,et_Twitter,et_Email,et_Zoom;
+        final AppCompatButton btn_Save;
+
+        et_Facebook = dialogView.findViewById(R.id.et_Facebook);
+        et_Instagram = dialogView.findViewById(R.id.et_Instagram);
+        et_Skype = dialogView.findViewById(R.id.et_Skype);
+        et_Twitter = dialogView.findViewById(R.id.et_Twitter);
+        et_Email = dialogView.findViewById(R.id.et_Email);
+        et_Zoom = dialogView.findViewById(R.id.et_Zoom);
+
+        btn_Save = dialogView.findViewById(R.id.btn_Save);
+
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+
+        btn_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                facebook = et_Facebook.getText().toString();
+                instagram = et_Instagram.getText().toString();
+                skype = et_Skype.getText().toString();
+                twitter = et_Twitter.getText().toString();
+                email = et_Email.getText().toString();
+                zoom = et_Zoom.getText().toString();
+
+                if (facebook.isEmpty() || instagram.isEmpty() || skype.isEmpty() || twitter.isEmpty() || email.isEmpty() || zoom.isEmpty())
+                    Toasty.warning(context, "Please input all fields.").show();
+                else {
+                    Toasty.warning(context, "Wala pay Function.").show();
+                    b.hide();
+                }
+            }
+        });
+
+        b.show();
+        Objects.requireNonNull(b.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+    private void openUpdateUserCredentials(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update_user_credentials, null);
+        final EditText et_Username, et_Password, et_ConfirmPassword;
+        final ImageView iv_Save;
+        final AppCompatButton btn_Save;
+
+        et_Username = dialogView.findViewById(R.id.et_Username);
+        et_Password = dialogView.findViewById(R.id.et_Password);
+        et_ConfirmPassword = dialogView.findViewById(R.id.et_ConfirmPassword);
+
+        btn_Save = dialogView.findViewById(R.id.btn_Save);
+
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+
+        btn_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = et_Username.getText().toString();
+                address = et_Password.getText().toString();
+                details = et_ConfirmPassword.getText().toString();
+
+                if (name.isEmpty() || address.isEmpty() || details.isEmpty())
+                    Toasty.warning(context, "Please input all fields.").show();
+                else {
+                    Toasty.warning(context, "Wala pay Function.").show();
+                    b.hide();
+                }
+            }
+        });
+
+        b.show();
+        Objects.requireNonNull(b.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+    private void showDatePickerDialog(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, (DatePickerDialog.OnDateSetListener) this,
+                    Calendar.getInstance().get(Calendar.YEAR),
+                    Calendar.getInstance().get(Calendar.MONTH),
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            );
+            datePickerDialog.show();
+        }
+    }
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String date = ""+ month +"/"+ dayOfMonth +"/"+ year;
+        et_Birthday.setText(date);
     }
 
     private void selectActions() {

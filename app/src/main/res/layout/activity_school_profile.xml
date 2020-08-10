@@ -93,46 +93,85 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/montessori_logo" />
 
-                <Button
-                    android:id="@+id/btn_ChooseFile"
-                    android:layout_width="65dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/selector3"
-                    android:text="Choose File"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/black"
-                    android:textSize="8sp"
-                    app:layout_constraintStart_toEndOf="@+id/iv_UserProfileImage"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btn_UploadPhoto"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
+                <TextView
+                    android:id="@+id/tv_UserSchoolName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/selector2"
-                    android:text="Upload Photo"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="8sp"
-                    app:layout_constraintStart_toStartOf="@+id/btn_ChooseFile"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_ChooseFile" />
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_UserProfileImage"
+                    app:layout_constraintTop_toTopOf="@+id/iv_UserProfileImage" />
+
+                <TextView
+                    android:id="@+id/tv_UserSchoolMotto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_UserSchoolName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_UserSchoolName" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_UserProfileImage"
+                    app:layout_constraintStart_toStartOf="@+id/tv_UserSchoolMotto">
+
+                    <Button
+                        android:id="@+id/btn_ChooseFile"
+                        android:layout_width="65dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/selector3"
+                        android:text="Choose File"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/black"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <Button
+                        android:id="@+id/btn_UploadPhoto"
+                        android:layout_width="80dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/selector2"
+                        android:text="Upload Photo"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <TextView
                     android:id="@+id/tv_FileChose"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:singleLine="true"
                     android:text="No File Chosen"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_ChooseFile"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraint"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btn_ChooseFile"
-                    app:layout_constraintTop_toTopOf="@+id/btn_ChooseFile" />
+                    app:layout_constraintStart_toEndOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
