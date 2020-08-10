@@ -3,6 +3,8 @@ package com.theyestech.yestechpremium.activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -31,7 +33,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.theyestech.yestechpremium.R;
+import com.theyestech.yestechpremium.dialogs.UserPhotoBottomSheetDialog;
+import com.theyestech.yestechpremium.utils.GlideOptions;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,13 +47,14 @@ import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity{
     private View view;
     private Context context;
 
     private Button btn_ChooseFile, btn_UploadPhoto, btn_UpdateInfo, btn_UpdateCredential;
-    private ImageView iv_UserProfileImage,iv_UserProfileBack;
-    private TextView tv_FileChose,tv_SchoolName,tv_SchoolAddress,tv_SchoolDetails,tv_SchoolMotto,tv_Username,tv_Password,tv_ConfirmPassword;
+    private ImageView iv_UserProfileImage,iv_UserProfileBack,iv_UserCoverPhoto,iv_UserProfileBackground;
+    private TextView tv_FileChose,tv_SchoolName,tv_SchoolAddress,tv_SchoolDetails,tv_SchoolMotto,tv_Username,tv_Password,tv_ConfirmPassword,tv_UserProfileMotto,tv_UserProfileFullname;
+    private AppCompatButton btn_Save;
 
     private static final int STORAGE_REQUEST_CODE = 400;
     private static final int IMAGE_PICK_GALLERY_CODE = 1000;
@@ -68,6 +75,11 @@ public class UserProfileActivity extends AppCompatActivity {
     private File myFile;
     private String name = "", address = "", details = "", motto = "";
     private String usertype;
+
+    private BottomSheetDialog bottomSheetDialog;
+
+    private boolean isSelected;
+    private int select;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +93,9 @@ public class UserProfileActivity extends AppCompatActivity {
         context = this;
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+
+        storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
     }
 
     @Override
@@ -90,6 +105,8 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void initializeUI(){
+        tv_UserProfileFullname = findViewById(R.id.tv_UserProfileFullname);
+        tv_UserProfileMotto = findViewById(R.id.tv_UserProfileMotto);
         btn_ChooseFile = findViewById(R.id.btn_ChooseFile);
         btn_UploadPhoto = findViewById(R.id.btn_UploadPhoto);
         btn_UpdateInfo = findViewById(R.id.btn_UpdateInfo);
@@ -104,10 +121,32 @@ public class UserProfileActivity extends AppCompatActivity {
         tv_Username = findViewById(R.id.tv_Username);
         tv_Password = findViewById(R.id.tv_Password);
         tv_ConfirmPassword = findViewById(R.id.tv_ConfirmPassword);
+        iv_UserCoverPhoto = findViewById(R.id.iv_UserCoverPhoto);
+        iv_UserProfileBackground = findViewById(R.id.iv_UserProfileBackground);
+        btn_Save = findViewById(R.id.btn_Save);
+        tv_UserProfileFullname.setText("Mugot, Rosalind");
+        tv_UserProfileMotto.setText("Education is the mother of leadership.");
+        iv_UserCoverPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select = 1;
+                openBottomSheetDialog();
+            }
+        });
         btn_ChooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectActions();
+                select = 2;
+                openBottomSheetDialog();
+//                UserPhotoBottomSheetDialog bottomSheet = new UserPhotoBottomSheetDialog();
+//                bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
+                //selectActions();
+            }
+        });
+        btn_Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toasty.warning(context, "Wala pay function").show();
             }
         });
         btn_UploadPhoto.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +156,9 @@ public class UserProfileActivity extends AppCompatActivity {
                     Toasty.warning(context, "Please chose a file").show();
                 }else{
                     Toasty.warning(context, "Wala pay function").show();
+                    tv_FileChose.setText("No File Chosen");
+                    btn_ChooseFile.setVisibility(View.VISIBLE);
+                    btn_UploadPhoto.setVisibility(View.GONE);
                 }
             }
         });
@@ -138,6 +180,38 @@ public class UserProfileActivity extends AppCompatActivity {
                 openUpdateCredentials();
             }
         });
+    }
+
+    private void openBottomSheetDialog(){
+
+        View view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_chose_photo, null);
+
+        ConstraintLayout constraint1 = view.findViewById(R.id.constraint1);
+        ConstraintLayout constraint2 = view.findViewById(R.id.constraint2);
+        constraint1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                askCameraPermissions();
+                bottomSheetDialog.dismiss();
+            }
+        });
+        constraint2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!checkStoragePermission()) {
+                    requestStoragePermission();
+                } else {
+                    selectedFilePath = "";
+                    pickImageGallery();
+                }
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetDialog = new BottomSheetDialog(context);
+        bottomSheetDialog.setContentView(view);
+
+        bottomSheetDialog.show();
     }
 
     private void openUpdateInfoDialog(){
@@ -310,7 +384,20 @@ public class UserProfileActivity extends AppCompatActivity {
                 myFile = new File(selectedFilePath);
                 displayName = myFile.getName();
                 tv_FileChose.setText(displayName);
-
+                if(select == 2){
+                    Glide.with(context)
+                            .load(selectedFile)
+                            .apply(GlideOptions.getOptions())
+                            .into(iv_UserProfileImage);
+                    btn_ChooseFile.setVisibility(View.GONE);
+                    btn_UploadPhoto.setVisibility(View.VISIBLE);
+                }else{
+                    Glide.with(context)
+                            .load(selectedFile)
+                            .into(iv_UserProfileBackground);
+                    iv_UserCoverPhoto.setVisibility(View.GONE);
+                    btn_Save.setVisibility(View.VISIBLE);
+                }
             }else if (requestCode == CAMERA_REQUEST_CODE) {
                 Bitmap image = (Bitmap) data.getExtras().get("data");
 
@@ -320,7 +407,22 @@ public class UserProfileActivity extends AppCompatActivity {
                 File filesDir = getApplicationContext().getFilesDir();
                 myFile = new File(filesDir, selectedFilePath + ".jpg");
                 displayName = myFile.getName();
-                tv_FileChose.setText(displayName);
+                //iv_UserProfileImage.setImageBitmap(image);
+                if(select == 2){
+                    Glide.with(context)
+                            .load(image)
+                            .apply(GlideOptions.getOptions())
+                            .into(iv_UserProfileImage);
+                    tv_FileChose.setText(displayName);
+                    btn_ChooseFile.setVisibility(View.GONE);
+                    btn_UploadPhoto.setVisibility(View.VISIBLE);
+                }else{
+                    Glide.with(context)
+                            .load(selectedFile)
+                            .into(iv_UserProfileBackground);
+                    iv_UserCoverPhoto.setVisibility(View.GONE);
+                    btn_Save.setVisibility(View.VISIBLE);
+                }
                 OutputStream os;
                 try {
                     os = new FileOutputStream(myFile);
@@ -333,4 +435,5 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         }
     }
+
 }

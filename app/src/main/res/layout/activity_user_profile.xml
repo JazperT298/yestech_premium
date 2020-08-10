@@ -15,14 +15,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.20" />
+
+
 
         <ImageView
             android:id="@+id/iv_UserProfileBackground"
@@ -36,6 +38,7 @@
             android:background="@drawable/bg_gradient" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginTop="24dp"
@@ -47,23 +50,41 @@
                 android:id="@+id/iv_UserProfileBack"
                 android:layout_width="?android:attr/actionBarSize"
                 android:layout_height="?android:attr/actionBarSize"
-                android:scaleType="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
             <ImageView
-                android:id="@+id/iv_UserProfileOptions"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="gone"
+                android:id="@+id/iv_UserCoverPhoto"
+                android:layout_width="?android:attr/actionBarSize"
+                android:layout_height="?android:attr/actionBarSize"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_options_white_green" />
+                android:scaleType="center"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_image_black_24dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Save"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/actionBarSize"
+                android:gravity="center"
+                android:text="Save"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
@@ -81,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <ImageView
                     android:id="@+id/iv_UserProfileImage"
                     android:layout_width="75dp"
@@ -93,46 +115,84 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/montessori_logo" />
 
-                <Button
-                    android:id="@+id/btn_ChooseFile"
-                    android:layout_width="65dp"
-                    android:layout_height="25dp"
+                <TextView
+                    android:id="@+id/tv_UserProfileFullname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/selector3"
-                    android:text="Choose File"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/black"
-                    android:textSize="8sp"
-                    app:layout_constraintStart_toEndOf="@+id/iv_UserProfileImage"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btn_UploadPhoto"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/selector2"
-                    android:text="Upload Photo"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="8sp"
-                    app:layout_constraintStart_toStartOf="@+id/btn_ChooseFile"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_ChooseFile" />
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_UserProfileImage"
+                    app:layout_constraintTop_toTopOf="@+id/iv_UserProfileImage" />
+
+                <TextView
+                    android:id="@+id/tv_UserProfileMotto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_UserProfileFullname"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_UserProfileFullname" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_UserProfileImage"
+                    app:layout_constraintStart_toStartOf="@+id/tv_UserProfileMotto">
+
+                    <Button
+                        android:id="@+id/btn_ChooseFile"
+                        android:layout_width="65dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/selector3"
+                        android:text="Choose File"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/black"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <Button
+                        android:id="@+id/btn_UploadPhoto"
+                        android:layout_width="80dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/selector2"
+                        android:text="Upload Photo"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <TextView
                     android:id="@+id/tv_FileChose"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:singleLine="true"
                     android:text="No File Chosen"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_ChooseFile"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraint"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btn_ChooseFile"
-                    app:layout_constraintTop_toTopOf="@+id/btn_ChooseFile" />
+                    app:layout_constraintStart_toEndOf="@+id/constraint"
+                    app:layout_constraintTop_toTopOf="@+id/constraint" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
