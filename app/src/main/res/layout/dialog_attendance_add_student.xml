@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -34,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Update Credentials"
+                    android:text="Select Student name"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -55,12 +56,12 @@
                     app:srcCompat="@drawable/ic_save_white_24dp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_Save"
+                    android:id="@+id/btn_Add"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/actionBarSize"
                     android:gravity="center"
-                    android:text="Save"
+                    android:text="Add"
                     android:textStyle="bold"
                     android:textAllCaps="false"
                     android:visibility="visible"
@@ -71,58 +72,63 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <EditText
-                android:id="@+id/et_Username"
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/sp_SelectStudent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_edittext"
-                android:ems="10"
-                android:hint="username..."
-                android:inputType="textPersonName"
-                android:padding="12dp"
-                android:textSize="14sp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
-            <EditText
-                android:id="@+id/et_Password"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_edittext"
-                android:ems="10"
-                android:hint="Password..."
-                android:inputType="textPassword"
-                android:padding="12dp"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_Username" />
 
-            <EditText
-                android:id="@+id/et_ConfirmPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/iv_StudentImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edittext"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:gravity="top"
-                android:hint="Confirm Password..."
-                android:padding="12dp"
-                android:textSize="14sp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/montessori_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_Password" />
+                app:layout_constraintTop_toBottomOf="@+id/sp_SelectStudent" />
+
+            <TextView
+                android:id="@+id/tv_StudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datu Dacula, Mohammad Yusoph"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@+id/iv_StudentImage"
+                app:layout_constraintTop_toTopOf="@+id/iv_StudentImage" />
+
+            <TextView
+                android:id="@+id/tv_StudentEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:text="mdo-G6202001@gmail.com"
+                app:layout_constraintStart_toEndOf="@+id/iv_StudentImage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_StudentName" />
+
+            <TextView
+                android:id="@+id/tv_StudentID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:text="mdo-G6202001"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toEndOf="@+id/iv_StudentImage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_StudentEmail" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

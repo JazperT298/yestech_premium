@@ -47,7 +47,7 @@
             android:textAllCaps="false"
             android:layout_gravity="right"
             android:visibility="visible"
-            android:textColor="@color/blue_500"
+            android:textColor="@color/colorWhite"
             android:background="?attr/selectableItemBackgroundBorderless" />
     </androidx.appcompat.widget.Toolbar>
 

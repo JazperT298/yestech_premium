@@ -1,6 +1,7 @@
 package com.theyestech.yestechpremium.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -43,6 +44,13 @@ public class ManageSubjectActivity extends AppCompatActivity {
 
         ImageView  iv_Close = findViewById(R.id.iv_Close);
         iv_Close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        AppCompatButton btn_Close = findViewById(R.id.btn_Close);
+        btn_Close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
