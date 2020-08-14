@@ -7,7 +7,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class HttpProvider {
-    private static final String BASE_URL = "https://theyestech.com/controllerClass/";
+    private static final String BASE_URL = "https://localhost:44338/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

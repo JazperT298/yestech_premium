@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String role;
 
-    private BottomNavigationView navView,nav_view_educator;
+    private BottomNavigationView navView,nav_view_educator,nav_view_student;
     private String usertype;
     private NavController navController;
 
@@ -42,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
             NavController nav_host_fragment_educator = Navigation.findNavController(this, R.id.nav_host_fragment_educator);
             //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
             NavigationUI.setupWithNavController(nav_view_educator, nav_host_fragment_educator);
+        }else if (usertype.equals("student")){
+            setContentView(R.layout.activity_student_main);
+            nav_view_student = findViewById(R.id.nav_view_student);
+            NavController nav_host_fragment_educator = Navigation.findNavController(this, R.id.nav_host_fragment_educator);
+            //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+            NavigationUI.setupWithNavController(nav_view_student, nav_host_fragment_educator);
         }
 
         context = this;
