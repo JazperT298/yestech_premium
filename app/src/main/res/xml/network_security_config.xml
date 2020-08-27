@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config>
+        <domain includeSubdomains="true">https://localhost:44338/</domain>
+        <trust-anchors>
+            <certificates src="@raw/yawa" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
+
+<!--<network-security-config>-->
+<!--    <base-config>-->
+<!--        <trust-anchors>-->
+<!--            <certificates src="@raw/yawa" />-->
+<!--            <certificates src="system" />-->
+<!--        </trust-anchors>-->
+<!--    </base-config>-->
+<!--</network-security-config>-->

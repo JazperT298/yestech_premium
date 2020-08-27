@@ -4,11 +4,13 @@ import android.content.Context;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.MySSLSocketFactory;
 import com.loopj.android.http.RequestParams;
 
-public class HttpProvider {
-    private static final String BASE_URL = "https://localhost:44338/";
+import cz.msebera.android.httpclient.entity.StringEntity;
 
+public class HttpProvider {
+    private static final String BASE_URL = "https://127.0.0.1:44338/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void post(Context context, String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
@@ -20,7 +22,13 @@ public class HttpProvider {
     }
 
     public static void postLogin(Context context, String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
         client.post(context, getAbsoluteUrl(url), null, params, null, responseHandler);
+    }
+
+    public static void post(Context ctx, String url, StringEntity entity, java.lang.String contentType, AsyncHttpResponseHandler responseHandler ){
+        client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
+        client.post(ctx,getAbsoluteUrl(url),entity,contentType,responseHandler);
     }
 
     public static void get(Context context, String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
